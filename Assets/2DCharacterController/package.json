@@ -1,0 +1,25 @@
+{
+  "name": "com.t02game.charactercontroller2d",
+  "displayName": "Character Controller 2D",
+  "description": "Character Controller 2D",
+  "version": "1.0.0",
+  "unity": "2021.3",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/toainguyenprogramminggame/UnityPackage_CharacterController2D.git"
+  },
+  "author": {
+    "name": "T02Game",
+    "email": "toainguyenprogramminggame@gmail.com",
+    "url": "https://github.com/toainguyenprogramminggame"
+  },
+  "dependencies": {
+  },
+  "keywords": [
+    "charactercontroller2d"
+  ],
+  "release": {
+    "branches": ["main"]
+  }
+}
