@@ -1,7 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "MoveInput", menuName = "CharacterController/MoveInput", order = 1)]
-public class MoveInput : ScriptableObject
+public class MoveInput : MonoBehaviour
 {
     private float horizontalInput;
     private bool dashInput;

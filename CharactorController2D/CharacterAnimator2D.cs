@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[RequireComponent (typeof(Animator), typeof(Rigidbody2D))]
 public class CharacterAnimator2D : MonoBehaviour
 {
     private Rigidbody2D rigidBody2D;
