@@ -1,4 +1,3 @@
-using SupanthaPaul;
 using UnityEngine;
 
 public class CharacterAnimator2D : MonoBehaviour
