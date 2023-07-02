@@ -1,49 +1,53 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(Rigidbody2D), typeof(MoveInput))]
 public class CharacterController2D : MonoBehaviour
 {
     [Header("Move Data")]
-    [SerializeField] private MoveConfigs moveData;
-    [SerializeField] private JumpConfigs jumpData;
-    [SerializeField] private DashConfigs dashData;
-    [SerializeField] private WallJumpConfigs wallJumpData;
+    [SerializeField] protected MoveConfigs moveData;
+    [SerializeField] protected JumpConfigs jumpData;
+    [SerializeField] protected DashConfigs dashData;
+    [SerializeField] protected WallJumpConfigs wallJumpData;
 
     [Space(10), Header("Input")]
-    [SerializeField] private MoveInput moveInput;
+    [SerializeField] protected MoveInput moveInput;
 
 
-    private bool isGrounded;
-    private bool canMove;
-    private bool isDashing = false;
-    private bool actuallyWallGrabbing = false;
+    [Space(10), Header("Check")]
+    [SerializeField] protected Transform groundCheck;
+    protected bool canMove = true;
 
-    private Rigidbody2D rigidBody2D;
-    private Transform groundCheck;
-    private bool m_facingRight = true;
-    private float m_groundedRemember = 0f;
-    private int m_extraJumps;
-    private float m_extraJumpForce;
-    private float m_dashTime;
-    private bool m_hasDashedInAir = false;
-    private bool m_onWall = false;
-    private bool m_onRightWall = false;
-    private bool m_onLeftWall = false;
-    private bool m_wallGrabbing = false;
-    private readonly float m_wallStickTime = 0.25f;
-    private float m_wallStick = 0f;
-    private bool m_wallJumping = false;
-    private float m_dashCooldown;
+
+
+    protected bool isGrounded;
+    protected bool isDashing = false;
+    protected bool actuallyWallGrabbing = false;
+
+    protected Rigidbody2D rigidBody2D;
+    protected bool m_facingRight = true;
+    protected float m_groundedRemember = 0f;
+    protected int m_extraJumps;
+    protected float m_extraJumpForce;
+    protected float m_dashTime;
+    protected bool m_hasDashedInAir = false;
+    protected bool m_onWall = false;
+    protected bool m_onRightWall = false;
+    protected bool m_onLeftWall = false;
+    protected bool m_wallGrabbing = false;
+    protected readonly float m_wallStickTime = 0.25f;
+    protected float m_wallStick = 0f;
+    protected bool m_wallJumping = false;
+    protected float m_dashCooldown;
 
     // 0 -> none, 1 -> right, -1 -> left
-    private int m_onWallSide = 0;
-    private int m_playerSide = 1;
+    protected int m_onWallSide = 0;
+    protected int m_playerSide = 1;
 
     public bool IsGrounded { get { return isGrounded; } }
     public bool ActuallyWallGrabbing { get {  return actuallyWallGrabbing; } }
     public bool IsDashing { get { return isDashing; } }
 
-    void Start()
+    protected virtual void Start()
     {
         m_extraJumps = jumpData.ExtraJumpCount;
         m_dashTime = dashData.StartDashTime;
@@ -53,7 +57,7 @@ public class CharacterController2D : MonoBehaviour
         rigidBody2D = GetComponent<Rigidbody2D>();
     }
 
-    private void FixedUpdate()
+    protected virtual void FixedUpdate()
     {
         // check if grounded
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, jumpData.GroundCheckRadius, jumpData.GroundLayer);
@@ -81,7 +85,7 @@ public class CharacterController2D : MonoBehaviour
         else
         {
             if (canMove && !m_wallGrabbing)
-                rigidBody2D.velocity = new Vector2(moveInput.HorizontalInput * moveData.Speed, rigidBody2D.velocity.y);
+                rigidBody2D.velocity = new Vector2(moveInput.HorizontalInput * moveData.Speed * Time.fixedDeltaTime, rigidBody2D.velocity.y);
             else if (!canMove)
                 rigidBody2D.velocity = new Vector2(0f, rigidBody2D.velocity.y);
         }
@@ -139,7 +143,7 @@ public class CharacterController2D : MonoBehaviour
         float playerVelocityMag = rigidBody2D.velocity.sqrMagnitude;
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         if (isGrounded)
         {
@@ -193,7 +197,7 @@ public class CharacterController2D : MonoBehaviour
         }
     }
 
-    private void Flip()
+    protected virtual void Flip()
     {
         m_facingRight = !m_facingRight;
         Vector3 scale = transform.localScale;
@@ -201,7 +205,7 @@ public class CharacterController2D : MonoBehaviour
         transform.localScale = scale;
     }
 
-    private void CalculateSides()
+    protected virtual void CalculateSides()
     {
         if (m_onRightWall)
             m_onWallSide = 1;

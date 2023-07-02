@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class MoveInput : MonoBehaviour
 {
-    private float horizontalInput;
-    private bool dashInput;
-    private bool jumpInput;
+    protected float horizontalInput;
+    protected bool dashInput;
+    protected bool jumpInput;
 
     public float HorizontalInput { get { return horizontalInput; } set {  horizontalInput = value; } }
     public bool DashInput { get { return dashInput; } set { dashInput = value; } }
@@ -23,8 +23,8 @@ public class MoveInput : MonoBehaviour
     {
         horizontalInput = Input.GetAxisRaw("Horizontal");
 
-        jumpInput = Input.GetKeyDown("Jump");
+        jumpInput = Input.GetButtonDown("Jump");
 
-        dashInput = Input.GetKeyDown("Dash");
+        dashInput = Input.GetButtonDown("Dash");
     }
 }

@@ -130,6 +130,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1865938915023229146, guid: 3c02ac99ebd71b24cb0f7c53261c4241,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 1865938915375051426, guid: 3c02ac99ebd71b24cb0f7c53261c4241,
         type: 3}
       propertyPath: m_RootOrder
@@ -190,6 +195,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1865938915375051438, guid: 3c02ac99ebd71b24cb0f7c53261c4241,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1865938915375051439, guid: 3c02ac99ebd71b24cb0f7c53261c4241,
+        type: 3}
+      propertyPath: m_LinearDrag
+      value: 0.7
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1173712999407116002, guid: 3c02ac99ebd71b24cb0f7c53261c4241, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 3c02ac99ebd71b24cb0f7c53261c4241, type: 3}
@@ -206,7 +221,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 123377470}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d7ea07bf0a0638d41a6d82dc4b48c1ec, type: 3}
   m_Name: 
@@ -223,11 +238,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d24fc58e85fcaec4e893ed6d49db6168, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveData: {fileID: 0}
-  jumpData: {fileID: 0}
-  dashData: {fileID: 0}
-  wallJumpData: {fileID: 0}
+  moveData: {fileID: 11400000, guid: c5cd9ead22a87ff448efa171a140edc3, type: 2}
+  jumpData: {fileID: 11400000, guid: 10046b7e9a72b1e4a98e969953a186c9, type: 2}
+  dashData: {fileID: 11400000, guid: 87fca4493a0dee6489ae448f843dc551, type: 2}
+  wallJumpData: {fileID: 11400000, guid: a2da9f789c0f9d542a72d3720042aec1, type: 2}
   moveInput: {fileID: 123377473}
+  groundCheck: {fileID: 598082761}
 --- !u!114 &123377473
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -240,6 +256,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a15e1644eee630a468766219db2d3c77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &123377474
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 123377470}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!1 &203670281
 GameObject:
   m_ObjectHideFlags: 0
@@ -250,7 +286,7 @@ GameObject:
   m_Component:
   - component: {fileID: 203670283}
   - component: {fileID: 203670282}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Tilemap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -365,6 +401,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 373184991}
   m_CullTransparentMesh: 0
+--- !u!4 &598082761 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1865938915023229146, guid: 3c02ac99ebd71b24cb0f7c53261c4241,
+    type: 3}
+  m_PrefabInstance: {fileID: 123377469}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &612136950
 GameObject:
   m_ObjectHideFlags: 0
@@ -2255,6 +2297,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 1865938915375051437, guid: 3c02ac99ebd71b24cb0f7c53261c4241,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3c02ac99ebd71b24cb0f7c53261c4241, type: 3}
